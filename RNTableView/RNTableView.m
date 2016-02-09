@@ -240,6 +240,7 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
     }
     if (item[@"image"]) {
         UIImage *image = [UIImage imageNamed:item[@"image"]];
+        
         if ([item[@"imageWidth"] intValue]) {
             CGSize itemSize = CGSizeMake([item[@"imageWidth"] intValue], image.size.height);
             CGPoint itemPoint = CGPointMake((itemSize.width - image.size.width) / 2, (itemSize.height - image.size.height) / 2);
@@ -313,13 +314,17 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
     return count;
 }
 -(UITableViewCell* )tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     NSDictionary *item = [self dataForRow:indexPath.item section:indexPath.section];
+    
+    UITableViewCellStyle cellStyle = item[@"cellStyle"] ? [item[@"cellStyle"] intValue] : self.tableViewCellStyle;
+    NSString *cellIdentifier = item[@"cellStyle"] ? [@"Cell_" stringByAppendingString:[item[@"cellStyle"] stringValue]] : @"Cell";
+        
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     // check if it is standard cell or user-defined UI
     if (![self hasCustomCells:indexPath.section]){
         if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:self.tableViewCellStyle reuseIdentifier:@"Cell"];
+            cell = [[UITableViewCell alloc] initWithStyle:cellStyle reuseIdentifier:cellIdentifier];
         }
         cell.textLabel.text = item[@"label"];
         cell.detailTextLabel.text = item[@"detail"];
