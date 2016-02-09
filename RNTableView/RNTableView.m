@@ -368,8 +368,12 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
 }
 
 -(UITableViewCell* )tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = nil;
     NSDictionary *item = [self dataForRow:indexPath.item section:indexPath.section];
+
+    UITableViewCellStyle cellStyle = item[@"cellStyle"] ? [item[@"cellStyle"] intValue] : self.tableViewCellStyle;
+    NSString *cellIdentifier = item[@"cellStyle"] ? [@"Cell_" stringByAppendingString:[item[@"cellStyle"] stringValue]] : @"Cell";
+
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
 
     // check if it is standard cell or user-defined UI
     if ([self hasCustomCells:indexPath.section]){
@@ -379,7 +383,7 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
         if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:self.tableViewCellStyle reuseIdentifier:@"Cell"];
+            cell = [[UITableViewCell alloc] initWithStyle:cellStyle reuseIdentifier:cellIdentifier];
         }
         cell.textLabel.text = item[@"label"];
         cell.detailTextLabel.text = item[@"detail"];
