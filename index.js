@@ -99,6 +99,9 @@ var TableView = React.createClass({
             if (section && section.type==TableView.Section) {
                 let customCells = false;
                 React.Children.forEach(section.props.children, function (child, itemIndex) {
+                    if (!child) {
+                      return
+                    }
                     var el = {};
                     extend(el, section.props);
                     extend(el, child.props);
