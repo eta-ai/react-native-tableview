@@ -1,6 +1,6 @@
 'use strict';
 var React = require('react-native');
-var {NativeMethodsMixin, ReactNativeViewAttributes, NativeModules, StyleSheet, View,requireNativeComponent} = React;
+var {NativeMethodsMixin, ReactNativeViewAttributes, NativeModules, StyleSheet, View, processColor, requireNativeComponent} = React;
 var RNTableViewConsts = NativeModules.UIManager.RNTableView.Constants;
 
 var TABLEVIEW = 'tableview';
@@ -83,6 +83,12 @@ var TableView = React.createClass({
                     extend(el, child.props);
                     if (el.children) {
                         el.label = el.children;
+                    }
+                    if (el.textColor) {
+                        el.textColor = processColor(el.textColor);
+                    }
+                    if (el.detailTextColor) {
+                        el.detailTextColor = processColor(el.detailTextColor);
                     }
                     count++;
                     items.push(el);
