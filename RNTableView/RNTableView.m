@@ -254,7 +254,14 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
         if (self.detailTextColor){
             cell.detailTextLabel.textColor = self.detailTextColor;
         }
-
+        if (item[@"textColor"]){
+            UIColor *itemTextColor = [RCTConvert UIColor:item[@"textColor"]];
+            cell.textLabel.textColor = itemTextColor;
+            cell.detailTextLabel.textColor = itemTextColor;
+        }
+        if (item[@"detailTextColor"]){
+            cell.detailTextLabel.textColor = [RCTConvert UIColor:item[@"detailTextColor"]];
+        }
     }
 
     if (self.selectedBackgroundColor && [item[@"selected"] intValue])

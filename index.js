@@ -113,6 +113,12 @@ var TableView = React.createClass({
                         el.image = resolveAssetSource(el.image);
                     }
 
+                    if (el.textColor) {
+                        el.textColor = processColor(el.textColor);
+                    }
+                    if (el.detailTextColor) {
+                        el.detailTextColor = processColor(el.detailTextColor);
+                    }
                     count++;
                     items.push(el);
 
