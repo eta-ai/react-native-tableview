@@ -115,6 +115,12 @@ var TableView = React.createClass({
                 if (!el.label){
                     el.label = el.children;
                 }
+                if (el.textColor) {
+                    el.textColor = processColor(el.textColor);
+                }
+                if (el.detailTextColor) {
+                    el.detailTextColor = processColor(el.detailTextColor);
+                }
                 additionalItems.push(el);
             } else if (section){
                 children.push(section);
