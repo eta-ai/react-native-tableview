@@ -9,6 +9,7 @@ import {
     requireNativeComponent,
     EdgeInsetsPropType,
     PointPropType,
+    processColor,
 } from 'react-native';
 var RNTableViewConsts = NativeModules.UIManager.RNTableView.Constants;
 var resolveAssetSource = require('react-native/Libraries/Image/resolveAssetSource');
@@ -111,6 +112,14 @@ var TableView = React.createClass({
 
                     if (el.image && typeof el.image === 'number') {
                         el.image = resolveAssetSource(el.image);
+                    }
+
+                    if (el.textColor) {
+                        el.textColor = processColor(el.textColor);
+                    }
+
+                    if (el.detailTextColor) {
+                        el.detailTextColor = processColor(el.detailTextColor);
                     }
 
                     count++;
