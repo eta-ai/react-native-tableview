@@ -119,6 +119,9 @@ var TableView = React.createClass({
                     if (el.detailTextColor) {
                         el.detailTextColor = processColor(el.detailTextColor);
                     }
+                    if (el.backgroundColor) {
+                        el.backgroundColor = processColor(el.backgroundColor);
+                    }
                     count++;
                     items.push(el);
 
