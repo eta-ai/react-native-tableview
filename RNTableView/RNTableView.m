@@ -501,6 +501,10 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
     [_eventDispatcher sendInputEventWithName:@"change" body:@{@"target":self.reactTag, @"sourceIndex":@(sourceIndexPath.row), @"sourceSection": @(sourceIndexPath.section), @"destinationIndex":@(destinationIndexPath.row), @"destinationSection":@(destinationIndexPath.section), @"mode": @"move"}];
+    
+    id object = [(NSMutableArray *)_sections[sourceIndexPath.section][@"items"] objectAtIndex:sourceIndexPath.row];
+    [(NSMutableArray *)_sections[sourceIndexPath.section][@"items"] removeObjectAtIndex:sourceIndexPath.row];
+    [(NSMutableArray *)_sections[sourceIndexPath.section][@"items"] insertObject:object atIndex:destinationIndexPath.row];
 }
 
 - (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath {
