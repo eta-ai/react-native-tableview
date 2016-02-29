@@ -144,6 +144,7 @@ var TableView = React.createClass({
                     tableViewStyle={TableView.Consts.Style.Plain}
                     tableViewCellStyle={TableView.Consts.CellStyle.Subtitle}
                     tableViewCellEditingStyle={TableView.Consts.CellEditingStyle.Delete}
+                    tableViewScrollPosition={TableView.Consts.ScrollPosition.Middle}
                     separatorStyle={TableView.Consts.SeparatorStyle.Line}
                     scrollIndicatorInsets={this.props.contentInset}
                     {...this.props}

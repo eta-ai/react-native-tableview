@@ -42,6 +42,9 @@ RCT_EXPORT_VIEW_PROPERTY(moveWithinSectionOnly, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(allowsToggle, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(allowsMultipleSelection, BOOL)
 
+RCT_CUSTOM_VIEW_PROPERTY(tableViewScrollPosition, UITableViewScrollPosition, RNTableView) {
+    [view setTableViewScrollPosition:[RCTConvert NSInteger:json]];
+}
 
 RCT_CUSTOM_VIEW_PROPERTY(tableViewStyle, UITableViewStyle, RNTableView) {
     [view setTableViewStyle:[RCTConvert NSInteger:json]];
@@ -94,6 +97,12 @@ RCT_CUSTOM_VIEW_PROPERTY(scrollIndicatorInsets, UIEdgeInsets, RNTableView) {
                      @"Blue": @(UITableViewCellSelectionStyleBlue),
                      @"Gray": @(UITableViewCellSelectionStyleGray),
                      @"Default": @(UITableViewCellSelectionStyleDefault)
+                     },
+             @"ScrollPosition": @{
+                     @"None": @(UITableViewScrollPositionNone),
+                     @"Top": @(UITableViewScrollPositionTop),
+                     @"Middle": @(UITableViewScrollPositionMiddle),
+                     @"Bottom": @(UITableViewScrollPositionBottom)
                      },
              @"SeparatorStyle": @{
                      @"None": @(UITableViewCellSeparatorStyleNone),

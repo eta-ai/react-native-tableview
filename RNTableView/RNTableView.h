@@ -39,6 +39,7 @@
 @property (nonatomic, assign) UIEdgeInsets contentInset;
 @property (nonatomic, assign) CGPoint contentOffset;
 @property (nonatomic, assign) UIEdgeInsets scrollIndicatorInsets;
+@property (nonatomic, assign) UITableViewScrollPosition tableViewScrollPosition;
 
 @property (nonatomic, assign) UITableViewStyle tableViewStyle;
 @property (nonatomic, assign) UITableViewCellStyle tableViewCellStyle;

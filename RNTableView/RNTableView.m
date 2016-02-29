@@ -127,7 +127,7 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
     if (_autoFocus && selectedSection>=0 && [self numberOfSectionsInTableView:self.tableView] && [self tableView:self.tableView numberOfRowsInSection:selectedSection]){
         dispatch_async(dispatch_get_main_queue(), ^{
             NSIndexPath *indexPath = [NSIndexPath indexPathForItem:[_selectedIndexes[selectedSection] intValue ]inSection:selectedSection];
-            [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+            [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:self.tableViewScrollPosition animated:YES];
         });
     }
 }
@@ -309,12 +309,6 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
     if ([self hasCustomCells:section]){
         if ([_cells count]<=section){
             return 0;
-        }
-        // don't display cells until their's height is not calculated (TODO: maybe it is possible to optimize??)
-        for (RNCellView *view in _cells[section]){
-            if (!view.componentHeight){
-                return 0;
-            }
         }
         count = [_cells[section] count];
     }
