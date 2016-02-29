@@ -173,6 +173,7 @@ var TableView = React.createClass({
                     tableViewStyle={TableView.Consts.Style.Plain}
                     tableViewCellStyle={TableView.Consts.CellStyle.Subtitle}
                     tableViewCellEditingStyle={this.props.tableViewCellEditingStyle}
+                    tableViewScrollPosition={TableView.Consts.ScrollPosition.Middle}
                     separatorStyle={TableView.Consts.SeparatorStyle.Line}
                     scrollIndicatorInsets={this.props.contentInset}
                     alwaysBounceVertical={this.props.alwaysBounceVertical}
