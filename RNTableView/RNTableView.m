@@ -332,7 +332,9 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
     } else {
         cell = ((RNCellView *)_cells[indexPath.section][indexPath.row]).tableViewCell;
     }
-    if (item[@"selected"] && [item[@"selected"] intValue]){
+    if (item[@"hideAccessory"]) {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    } else if (item[@"selected"] && [item[@"selected"] intValue]){
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     } else if ([item[@"arrow"] intValue]) {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
