@@ -398,6 +398,8 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
         } else {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         }
+    if (item[@"hideAccessory"]) {
+        cell.accessoryType = UITableViewCellAccessoryNone;
     } else if ([item[@"arrow"] intValue]) {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     } else if ([item[@"accessoryType"] intValue]) {
