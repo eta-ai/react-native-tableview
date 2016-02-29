@@ -388,8 +388,9 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
         cell.textLabel.text = item[@"label"];
         cell.detailTextLabel.text = item[@"detail"];
     }
-
-    if (item[@"selected"] && [item[@"selected"] intValue]){
+    if (item[@"hideAccessory"]) {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    } else if (item[@"selected"] && [item[@"selected"] intValue]){
         if (item[@"selectedAccessoryType"])
         {
             NSLog(@"selectedAccessoryType %@", [item[@"selectedAccessoryType"] intValue]);
