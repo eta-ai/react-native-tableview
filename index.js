@@ -1,6 +1,7 @@
 'use strict';
-var React = require('react-native');
-var {NativeMethodsMixin, ReactNativeViewAttributes, NativeModules, StyleSheet, View, processColor, requireNativeComponent} = React;
+var React = require('react');
+var ReactNative = require('react-native');
+var {EdgeInsetsPropType, PointPropType, NativeMethodsMixin, ReactNativeViewAttributes, NativeModules, StyleSheet, View, processColor, requireNativeComponent} = ReactNative;
 var RNTableViewConsts = NativeModules.UIManager.RNTableView.Constants;
 
 var TABLEVIEW = 'tableview';
@@ -35,13 +36,13 @@ var TableView = React.createClass({
          * of the TableView. Defaults to `{0, 0, 0, 0}`.
          * @platform ios
          */
-        contentInset: React.EdgeInsetsPropType,
+        contentInset: EdgeInsetsPropType,
         /**
          * Used to manually set the starting scroll offset.
          * The default value is `{x: 0, y: 0}`.
          * @platform ios
          */
-        contentOffset: React.PointPropType,
+        contentOffset: PointPropType,
         /**
          * The amount by which the scroll view indicators are inset from the
          * edges of the TableView. This should normally be set to the same
@@ -49,7 +50,7 @@ var TableView = React.createClass({
          * `{0, 0, 0, 0}`.
          * @platform ios
          */
-        scrollIndicatorInsets: React.EdgeInsetsPropType,
+        scrollIndicatorInsets: EdgeInsetsPropType,
     },
 
     getInitialState: function() {
