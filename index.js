@@ -6,6 +6,7 @@ import {
     NativeModules,
     StyleSheet,
     View,
+    processColor,
     requireNativeComponent,
     EdgeInsetsPropType,
     PointPropType,
