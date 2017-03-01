@@ -75,8 +75,6 @@
         _cellHeight = 44;
         _cells = [NSMutableArray array];
         _autoFocus = YES;
-        _allowsToggle = NO;
-        _allowsMultipleSelection = NO;
     }
     return self;
 }
@@ -395,10 +393,10 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
      * default: allowMultipleSelection:false and allowToggle: false
      */
     if ((oldValue[@"selected"] && [oldValue[@"selected"] intValue]) || self.selectedValue){
-        if (_allowsToggle && newValue[@"selected"] && [newValue[@"selected"] intValue]) {
+        if (self.allowsToggle && newValue[@"selected"] && [newValue[@"selected"] intValue]) {
             [newValue removeObjectForKey:@"selected"];
         } else {
-            if (!_allowsMultipleSelection) {
+            if (!self.allowsMultipleSelection) {
                 [oldValue removeObjectForKey:@"selected"];
             }
             [newValue setObject:@1 forKey:@"selected"];
