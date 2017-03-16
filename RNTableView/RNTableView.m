@@ -417,9 +417,9 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
     }
     if (item[@"selectionStyle"]) {
         cell.selectionStyle = [item[@"selectionStyle"] intValue];
-        if (cell.selectionStyle == UITableViewCellSelectionStyleNone) {
-          cell.userInteractionEnabled = false;
-        }
+    }
+    if (item[@"userInteractionEnabled"]) {
+        cell.userInteractionEnabled = [item[@"userInteractionEnabled"] boolValue];
     }
     return cell;
 }
