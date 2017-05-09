@@ -1,8 +1,8 @@
 'use strict';
 import React, { Component } from 'react';
-import NativeMethodsMixin from 'react/lib/NativeMethodsMixin';
 import {
     ReactNativeViewAttributes,
+    NativeMethodsMixin,
     NativeModules,
     StyleSheet,
     View,
