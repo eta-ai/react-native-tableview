@@ -396,7 +396,6 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
     } else if (item[@"selected"] && [item[@"selected"] intValue]){
         if (item[@"selectedAccessoryType"])
         {
-            NSLog(@"selectedAccessoryType %@", [item[@"selectedAccessoryType"] intValue]);
             cell.accessoryType = [item[@"selectedAccessoryType"] intValue];
         } else {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
