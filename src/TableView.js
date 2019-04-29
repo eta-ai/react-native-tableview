@@ -7,6 +7,7 @@ import {
   EdgeInsetsPropType,
   PointPropType,
   findNodeHandle,
+  processColor,
   View,
 } from 'react-native'
 import TableViewSection from './TableViewSection'
@@ -196,6 +197,11 @@ class TableView extends React.Component {
 
           if (el.image && typeof el.image === 'number') {
             el.image = resolveAssetSource(el.image)
+          }
+
+          if (el.backgroundColor) {
+            const processedColor = processColor(el.backgroundColor);
+            el.backgroundColor = processedColor
           }
 
           count++

@@ -376,8 +376,6 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
         if (item[@"transparent"])
         {
             [cell setBackgroundColor:[UIColor clearColor]];
-        } else {
-            [cell setBackgroundColor:[UIColor whiteColor]];
         }
     }
     
