@@ -187,6 +187,8 @@ class TableView extends React.Component {
         let customCells = false
 
         React.Children.forEach(section.props.children, (child, itemIndex) => {
+					if (!child) return
+
           const el = {}
           extend(el, section.props)
           extend(el, child.props)
