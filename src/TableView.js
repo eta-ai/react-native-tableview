@@ -201,6 +201,14 @@ class TableView extends React.Component {
             el.image = resolveAssetSource(el.image)
           }
 
+					if (el.textColor) {
+						el.textColor = processColor(el.textColor);
+          }
+
+					if (el.detailTextColor) {
+          	el.detailTextColor = processColor(el.detailTextColor);
+          }
+
           if (el.backgroundColor) {
             const processedColor = processColor(el.backgroundColor);
             el.backgroundColor = processedColor
@@ -237,6 +245,13 @@ class TableView extends React.Component {
         if (!el.label) {
           el.label = el.children
         }
+				if (el.textColor) {
+					el.textColor = processColor(el.textColor);
+				}
+				if (el.detailTextColor) {
+					el.detailTextColor = processColor(el.detailTextColor);
+				}
+
 
         additionalItems.push(el)
       } else if (section) {
